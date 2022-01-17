@@ -1,60 +1,71 @@
-(defvar bootstrap-version)
-(let ((bootstrap-file
-       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
-      (bootstrap-version 5))
-  (unless (file-exists-p bootstrap-file)
-    (with-current-buffer
-        (url-retrieve-synchronously
-         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
-         'silent 'inhibit-cookies)
-      (goto-char (point-max))
-      (eval-print-last-sexp)))
-  (load bootstrap-file nil 'nomessage))
+;; Common global settings
+(setq avy-char "C-:")
+(setq potential-packages '(focus helm evil-collection))
+(setq gui-theme 'monokai)
+(setq tui-theme 'spolsky)
+(setq lpt-use-evil-mode t)
+(setq lpt-use-emacs-dashboard t)
 
-(straight-use-package 'use-package)
+;; Load our package manager
+(load-file "~/.emacs.d/setup-straight.el")
 
-(use-package epkg
-  :straight t)
+(defun check-and-load
+    (should-load file-list)
+  "Loads files if a condition is met"
+  (when should-load
+    (mapc
+     'load-file
+     file-list)))
 
-(use-package evil
-  :straight t)
+;; Use evil-mode
+(when lpt-use-evil-mode
+  (use-package evil
+    :straight t))
 
+;; Convenience Packages
 (use-package rainbow-delimiters :straight t)
 
 (use-package avy :straight t)
 
 (use-package magit :straight t)
 
+;; Modeline packages
 (use-package spaceline :straight t)
+(use-package mood-line :straight t)
 
-(setq avy-char "C-:")
-(setq potential-packages '(focus helm evil-collection))
-(setq gui-theme 'monokai)
-(setq tui-theme 'spolsky)
+;; Optional Dashboard
+(use-package dashboard :straight t)
 
-(use-package sublime-themes
-  :straight t)
-;; (load-theme 'spolsky t)
+;; ALL Icons
+(use-package all-the-icons :straight t)
 
-(use-package darkokai-theme
-  :straight t)
-;; (load-theme 'darkokai t)
+;; Themes
+(use-package sublime-themes :straight t)
 
-(use-package monokai-theme
-  :straight t)
-(load-theme gui-theme t)
+(use-package darkokai-theme :straight t)
 
-;; (use-package the-matrix-theme
-;;   :staight t)
-;; (use-package material-theme
-;;   :staight t)
+(use-package monokai-theme :straight t)
 
-(show-paren-mode 1)
-(setq show-paren-style 'parenthesis)
+(use-package the-matrix-theme :straight t)
 
+(use-package material-theme :straight t)
+
+;; Load keybindings
 (load-file "~/.emacs.d/keys/base.el")
-(load-file "~/.emacs.d/keys/evil.el")
 
-(when window-system
-     (load-file "~/.emacs.d/ui/gui/font.el")
-     (load-file "~/.emacs.d/ui/gui/gui.el"))
+(check-and-load
+ lpt-use-evil-mode
+ '("~/.emacs.d/keys/evil.el"))
+
+;; Load UI settings
+(load-file "~/.emacs.d/ui/ui.el")
+
+;; Load GUI-specific settings
+(check-and-load
+ window-system
+ '("~/.emacs.d/ui/gui/font.el" "~/.emacs.d/ui/gui/gui.el"))
+
+;; Load TUI-specific settings
+(check-and-load
+ (not window-system)
+ '("~/.emacs.d/ui/tui/tui.el"))
