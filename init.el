@@ -12,27 +12,38 @@
   (load bootstrap-file nil 'nomessage))
 
 (straight-use-package 'use-package)
-(tool-bar-mode 0)
-
-(use-package evil
-  :straight t)
-(evil-mode 1)
 
 (use-package epkg
   :straight t)
 
+(use-package evil
+  :straight t)
+
 (use-package rainbow-delimiters :straight t)
 
-(use-package avy
-  :straight t)
-(global-set-key (kbd "C-:") 'avy-goto-char)
+(use-package avy :straight t)
+
+(use-package magit :straight t)
+
+(use-package spaceline :straight t)
+
+(setq avy-char "C-:")
+(setq potential-packages '(focus helm evil-collection))
+(setq gui-theme 'monokai)
+(setq tui-theme 'spolsky)
 
 (use-package sublime-themes
   :straight t)
-(load-theme 'spolsky t)
+;; (load-theme 'spolsky t)
 
-;; (use-package darkokai-theme
-;;   :straight t)
+(use-package darkokai-theme
+  :straight t)
+;; (load-theme 'darkokai t)
+
+(use-package monokai-theme
+  :straight t)
+(load-theme gui-theme t)
+
 ;; (use-package the-matrix-theme
 ;;   :staight t)
 ;; (use-package material-theme
@@ -40,14 +51,10 @@
 
 (show-paren-mode 1)
 (setq show-paren-style 'parenthesis)
-(setq exwm-workspace-number 4)
+
+(load-file "~/.emacs.d/keys/base.el")
+(load-file "~/.emacs.d/keys/evil.el")
 
 (when window-system
-  (tool-bar-mode 0))
-
-(use-package exwm :straight t)
-(require 'exwm)
-(require 'exwm-config)
-(exwm-config-example)
-
-(load-file "~/.emacs.d/font.el")
+     (load-file "~/.emacs.d/ui/gui/font.el")
+     (load-file "~/.emacs.d/ui/gui/gui.el"))
