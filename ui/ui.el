@@ -6,6 +6,7 @@
 ;; Parens editing
 (show-paren-mode 1)
 (setq show-paren-style 'parenthesis)
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 ;; Stop cursor blinking
 (blink-cursor-mode 0)

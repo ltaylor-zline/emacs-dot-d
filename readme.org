@@ -1,1 +1,4 @@
-* Work-In-Progress!
+* Emacs Dotfiles for Luke
+This config is optimized for Mac OS on a x64 MBP 16".
+
+It uses straight.el for package management.

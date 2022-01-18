@@ -14,3 +14,6 @@
  "Noto Sans Mono")
 (set-font-if-exists
  "Hack NF-18.0")
+
+(when (featurep 'ns-win)
+  (set-frame-font "-*-HackGenNerd Console-medium-normal-normal-*-18-*-*-*-m-0-iso10646-1" t t))

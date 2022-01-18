@@ -5,6 +5,9 @@
 (setq tui-theme 'spolsky)
 (setq lpt-use-evil-mode t)
 (setq lpt-use-emacs-dashboard t)
+(setq lpt-transparent-frame t)
+(setq lpt-frame-alpha 94)
+(setq lpt-gui-modeline-selection 'spaceline)
 
 ;; Load our package manager
 (load-file "~/.emacs.d/setup-straight.el")

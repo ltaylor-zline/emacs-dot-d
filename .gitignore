@@ -5,3 +5,6 @@ elpa
 **~
 epkgs
 ido.last
+/eln-cache/
+/recentf
+/transient/
