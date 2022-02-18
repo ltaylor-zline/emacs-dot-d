@@ -27,10 +27,14 @@
 
 ;; Convenience Packages
 (use-package rainbow-delimiters :straight t)
+(use-package magit-delta :straight t)
+(setq magit-delta-delta-executable "/usr/local/bin/delta")
 
 (use-package avy :straight t)
 
 (use-package magit :straight t)
+
+(use-package company :straight t)
 
 ;; Modeline packages
 (use-package spaceline :straight t)
@@ -72,3 +76,18 @@
 (check-and-load
  (not window-system)
  '("~/.emacs.d/ui/tui/tui.el"))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(warning-suppress-types '((comp))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+;; Load programming languages packages
+;; (load-file "~/.emacs.d/code/langs.el")

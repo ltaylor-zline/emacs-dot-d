@@ -7,6 +7,8 @@
 (show-paren-mode 1)
 (setq show-paren-style 'parenthesis)
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+;; (add-hook 'prog-mode-hook (lambda () (use-package csharp-mode)))
+;; (add-hook 'prog-mode-hook (lambda () (use-package js2-mode)))
 
 ;; Stop cursor blinking
 (blink-cursor-mode 0)
