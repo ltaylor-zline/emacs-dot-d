@@ -1,3 +1,8 @@
-(use-package js2-mode)
+;; Javascript
+(use-package js2-mode :straight t)
 
-(use-package csharp-mode)
+;; C#
+(use-package csharp-mode :straight t)
+
+;; Markdown
+(use-package markdown-mode :straight t)
