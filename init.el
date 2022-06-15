@@ -9,6 +9,7 @@
 (setq lpt-transparent-frame t)
 (setq lpt-frame-alpha 94)
 (setq lpt-gui-modeline-selection 'spaceline)
+(setq show-trailing-whitespace t)
 
 ;; Load our package manager
 (load-file "~/.emacs.d/setup-straight.el")
